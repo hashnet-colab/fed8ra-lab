@@ -2,9 +2,11 @@
 
 **Follow the work. Verify the delivery. Share the account.**
 
-A partner-facing record of experiments connecting applications, AI providers and platform services through the existing NEO edge, shared evidence rail and federation accounting.
+A partner-facing record of experiments connecting applications, AI providers and platform services through our operational NEO edges, live evidence rail and federation accounting.
 
-Our next experiment follows one service lifecycle: **publish → subscribe → order → execute → deliver → accept → account → independently verify**.
+**The next experiment combines real AI inference on Villanova NVIDIA B200 GPUs with a 48-hour federation workflow:** application orders, model execution, delivery checks, separate organisation books, returned proofs and period accounting. Synthetic inputs keep the experiment reproducible; model execution and rail processing use real infrastructure.
+
+Our next experiment follows one service lifecycle: **publish → subscribe → order → GPU inference → deliver → accept → account → independently verify**.
 
 **Current status: PREPARING — the 48-hour experiment has not started.** This repository presents a proposed integration and will retain measured results, including failures. It does not announce a production service or partner endorsement.
 
@@ -21,7 +23,7 @@ Our next experiment follows one service lifecycle: **publish → subscribe → o
 ```mermaid
 flowchart LR
     A[Application / Result role] -->|Order| P[Catalogue / Platform Mesh role]
-    P --> V[AI provider / Villanova role]
+    P --> V[AI provider / Villanova model on B200 GPUs]
     V -->|Result| A
     A --> E[Separate organisation edge books]
     P --> E
@@ -35,9 +37,15 @@ Original documents and results remain in their owner's storage. The rail records
 
 ## What is already available
 
-The existing stack supplies the server-edge package, business action tracking, evidence return, accounting components and Chamber process. Component tests and earlier experiments exist separately. Their results do not automatically qualify this new combined run.
+Our edges and live LAB rail already record events and return strictly verified FINAL proofs. Previous experiments have also executed Villanova and Qwen models on Villanova B200 GPUs. The existing stack supplies business action tracking, accounting components and the Chamber process.
 
-For this experiment, CPU-only scheduling and unprivileged network isolation were checked on Villanova infrastructure. The selected server-edge source package was installed in an isolated user directory, its source checks passed, strict cryptographic support was available, and seven packaging tests passed after supplying test dependencies and public-key fixtures. **No live edge or first FINAL has yet been established for this experiment.** These are preparation checks, not the result of the 48-hour run.
+This experiment brings those capabilities together in one sustained federation workflow. Its own results will be recorded separately from earlier tests.
+
+For this experiment, CPU-only scheduling and unprivileged network isolation were checked on Villanova infrastructure. The selected server-edge source package was installed in an isolated user directory, its source checks passed, strict cryptographic support was available, and seven packaging tests passed after supplying test dependencies and public-key fixtures. **The remaining setup is to connect these new Villanova-hosted edge instances to the operational rail and verify their first FINAL.** The 48-hour clock starts after that preflight.
+
+## GPU work within the 48-hour run
+
+Time-bounded GPU batches will execute real model requests while CPU-based edges continue recording and collecting proofs between batches. The plan uses up to four B200 GPUs, with approximately half the memory per GPU, subject to scheduler availability. We will report actual model revisions, request counts, latency, GPU allocation time and verified outcomes. GPUs are not reserved continuously while the system waits for finality.
 
 ## Relationship to existing work
 
