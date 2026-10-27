@@ -23,7 +23,7 @@ Our next experiment follows one service lifecycle: **publish → subscribe → o
 ```mermaid
 flowchart LR
     A[Application / Result role] -->|Order| P[Catalogue / Platform Mesh role]
-    P --> V[AI provider / Villanova model on B200 GPUs]
+    P --> V[AI provider / pinned models on Villanova B200 GPUs]
     V -->|Result| A
     A --> E[Separate organisation edge books]
     P --> E
