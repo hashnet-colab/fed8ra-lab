@@ -15,11 +15,11 @@ An initial workload is synthetic oximetry reporting. Test categories and numeric
 ## Schedule and resource limits
 
 - Preflight is outside the scored run: package pins, identities, route, trust, restart persistence and first FINAL must pass first.
-- Start with three edge instances; expand toward twelve only when admission, isolation and resource measurements pass.
+- Qualify three preflight edge instances, then start twelve fresh scored identities after the complete business/proof-return gate.
 - The scored duration is 48 elapsed hours, with explicit UTC start/end timestamps. Do not reset the start to hide a failure.
 - Use bounded scheduler jobs on compute nodes. No persistent services on the login node.
-- GPU work is intermittent, within the owner's limit of four GPUs and approximately half the memory per GPU. CPU edge work continues between inference batches.
-- Workload rate is measured during preflight, then fixed and recorded. There is no invented throughput target.
+- GPU work uses two B200 cards per batch and approximately half the memory per model server. Batches are serialized, bounded to 25 minutes each, and scheduled every four hours. CPU edges continue between batches.
+- The fixed schedule is 48 orders per four-hour batch: 576 planned orders over 48 hours. Actual execution and acceptance counts are reported separately.
 - Stop generation at the planned end; allow a separately reported finality-drain interval. Pending records remain pending if the drain deadline expires.
 - Persist originals, books, checkpoints and evidence across scheduled process restarts. The run must not rely on a laptop or a long-lived SSH session.
 
@@ -35,13 +35,13 @@ An initial workload is synthetic oximetry reporting. Test categories and numeric
 | Edge/process restart | The same book and unfinished job resume without replacement identities |
 | Temporary transport outage | Pending remains visible, then recovers; no claim of immediate finality |
 | Altered proof | Strict verification refuses it |
-| Higher concurrency | Measure latency, memory, CPU, backlog and recovery without unbounded load |
+| Twelve simultaneous edge books | Measure memory, backlog and recovery under the fixed workload |
 
 Fault injection affects only this experiment's instances and routes. It never stops shared rail services or other users' jobs.
 
 ## Accounting
 
-Close two explicitly defined 24-hour LAB accounting periods, or use the existing engine's UTC-day rule and report the resulting periods accurately. Do not change business rules merely to fit the clock.
+Use the existing engine's UTC acceptance-day rule. Close a day only after every obligation's 24-hour objection window has elapsed; later days can remain pending at the end of the run.
 
 Eligibility follows the existing acceptance and objection-window rules. If an obligation is not yet eligible at close, carry it forward and report it. A mandate's spending at order time is not the same total as accepted obligations eligible for netting.
 

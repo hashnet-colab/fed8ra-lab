@@ -1,32 +1,35 @@
-# Villanova-hosted FED8RA experiment — preparation opened 27 October 2026
+# Villanova-hosted FED8RA experiment — 27 October 2026
 
-**Status: PREPARING. The 48-hour clock has not started.**
+**Status: RUNNING. The scored clock started 27 October at 21:43:29 UTC.**
 
-| Item | State |
+| Item | Observed / configured state |
 |---|---|
-| Duration | 48 hours, plus separately reported finality drain |
-| Target | 3 initial edge identities, scaling toward 12 after preflight |
-| Data | Synthetic workload; no patient/customer data |
-| Source candidate | 2026.10.20-rc3 |
-| Existing edge and live rail | Already exercised in earlier runs; this run connects new instances |
-| GPU inference | Preparation batch completed on two B200 GPUs; scored-run batches not started |
-| GPU availability | Previous inference runs completed; new batches use the shared scheduler |
-| CPU scheduler probe | Passed in preparation |
-| Unprivileged network namespace | Available in preparation |
-| Reachability to mTLS entry | Endpoint reached; unauthenticated request rejected |
-| Source integrity / strict crypto availability | Passed in preparation |
-| Packaging tests | 7/7 passed after adding test dependencies and public-key fixtures |
-| Outbound transport from isolated edge namespaces | Network probe passed; mTLS endpoint correctly rejects a request without a certificate |
-| Dedicated LAB identities and credentials | Separate identities prepared; connection activation pending |
-| First event and strict FINAL from these new Villanova instances | Pending connection preflight |
-| Co-Tru application integration for this run | Existing business-engine tests: 16/16 pass; integrated execution pending |
-| Result application / catalogue integration | Explicitly simulated application and catalogue roles in this run |
-| 48-hour start / end | Not set |
-| Verdict | NOT RUN |
+| Generation window | 27 Oct 21:43:29 UTC → 29 Oct 21:43:29 UTC |
+| Finality drain | Up to one additional hour, reported separately |
+| Live edge instances | 12, with separate identities, books, queues and retained originals |
+| Topology | Three logical business chains, four LAB roles each |
+| GPU | Two B200 cards per intermittent batch; 50% memory per model server; serialized jobs |
+| Schedule | 48 orders every four hours; 576 planned over 48 hours |
+| Models | Qwen3-32B primary; Villanova-2B comparison; every delivery checked |
+| Data / roles | Our synthetic LAB data and identities; Result/eEarly and SAP/Platform Mesh roles simulated |
+| Candidate | Unchanged 2026.10.20-rc3 |
+| Source/package checks | Source hashes verified; seven packaging tests passed |
+| Connected preflight | 15/15 records strictly FINAL across three books |
+| Real business preflight | Order → GPU execution → checked delivery → one accepted obligation |
+| Independent verification | Three offline proof checks, original hashes and nine business-source digests passed |
+| Negative proof controls | Changed seal, wrong edge and wrong content rejected |
+| Retry/conflict controls | Repeated submission added no booking; changed content under same identity refused |
+| First scored batch | 48 real GPU jobs completed; 47 deliveries accepted, one declared bad delivery rejected |
+| Money / revenue allocation / human Chamber decisions | No money moved; allocation and Chamber decisions NOT EXERCISED |
+| Verdict | IN PROGRESS — completion and PASS are separate |
 
-The existing live edge/rail capability is the foundation of this run. Preparation checks cover the new Villanova installation; the connected 48-hour run is still ahead. The first two test attempts lacked the test runner and then public-key fixtures; these setup failures were corrected before the seven-test pass. Runtime source files were not changed.
+This is a real infrastructure run using our LAB identities, not a claim of independently operated partner installations. Access to Villanova compute is not partner acceptance. GPU execution, separate local books and the operational rail are real. The run continues without the Mac.
 
-Next: complete isolated transport and assigned identities, qualify one event through strict FINAL, validate the connected business scenario, then record the actual topology and start the bounded run.
+The preflight is outside the 48-hour scored interval. Its independent verifications checked the retained original, local record and 4,605-seal chain from pinned genesis. All fifteen preflight records were FINAL before the scored clock began. New scored records have their own finality wait.
+
+The fixed workload uses the existing Co-Tru business engine, mandate gate and objection window. Each batch contains one declared bad delivery which must be rejected. At +12h one test edge is restarted; at +24h one test tunnel is paused for 75 seconds. Shared rail services remain untouched. Later UTC-day accounts may still be awaiting the existing 24-hour objection window when the run ends.
+
+Machine-readable [launch snapshot](status.json) is timestamped; it is not a live polling endpoint. Full results will preserve failures and pending records.
 
 ## GPU preparation result — 27 October
 
@@ -45,4 +48,4 @@ Pinned revisions:
 - Qwen/Qwen3-32B: `9216db5781bf21249d130ec9da846c4624c16137`
 - VillanovaAI/Villanova-2B-2603: `18280c7836baee3ce26bf3d91dad9fff4b33b539`
 
-The new edge connection and first strict proof return are still pending. **No 48-hour result is claimed.**
+The subsequent three-edge connection and business proof-return preflight passed. **The 48-hour run is ongoing; no final verdict is claimed.**

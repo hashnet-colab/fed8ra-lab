@@ -4,11 +4,11 @@
 
 A partner-facing record of experiments connecting applications, AI providers and platform services through our operational NEO edges, live evidence rail and federation accounting.
 
-**The next experiment combines real AI inference on Villanova NVIDIA B200 GPUs with a 48-hour federation workflow:** application orders, model execution, delivery checks, separate organisation books, returned proofs and period accounting. Synthetic inputs keep the experiment reproducible; model execution and rail processing use real infrastructure.
+**The running experiment combines real AI inference on Villanova NVIDIA B200 GPUs with a 48-hour federation workflow:** application orders, model execution, delivery checks, separate organisation books, returned proofs and period accounting. Synthetic inputs keep the experiment reproducible; model execution and rail processing use real infrastructure.
 
-Our next experiment follows one service lifecycle: **publish → subscribe → order → GPU inference → deliver → accept → account → independently verify**.
+This experiment follows one service lifecycle: **publish → subscribe → order → GPU inference → deliver → accept → account → independently verify**.
 
-**Current status: PREPARING — the 48-hour experiment has not started.** This repository presents a proposed integration and will retain measured results, including failures. It does not announce a production service or partner endorsement.
+**Current status: RUNNING — started 27 October 2026 at 21:43:29 UTC; scheduled generation ends 29 October at 21:43:29 UTC.** This repository presents a proposed integration and will retain measured results, including failures. It does not announce a production service or partner endorsement.
 
 ## Start here
 
@@ -18,7 +18,7 @@ Our next experiment follows one service lifecycle: **publish → subscribe → o
 | [Partner roles](docs/PARTNER-ROLES.md) | Result, Villanova, SAP and FED8RA: proposed roles and actual execution boundaries |
 | [How to participate](docs/CONNECT.md) | Application events, server edges and the installation review |
 | [Evidence and accounting](docs/EVIDENCE.md) | What a proof establishes, what stays local and how results are reported |
-| [Current run](runs/2026-10-27-villanova-48h/README.md) | Preparation status; start and end remain unset |
+| [Current run](runs/2026-10-27-villanova-48h/README.md) | Actual start, topology, preparation evidence and current status |
 
 ```mermaid
 flowchart LR
@@ -41,11 +41,11 @@ Our edges and live LAB rail already record events and return strictly verified F
 
 This experiment brings those capabilities together in one sustained federation workflow. Its own results will be recorded separately from earlier tests.
 
-For this experiment, CPU-only scheduling and unprivileged network isolation were checked on Villanova infrastructure. The selected server-edge source package was installed in an isolated user directory, its source checks passed, strict cryptographic support was available, and seven packaging tests passed after supplying test dependencies and public-key fixtures. **The remaining setup is to connect these new Villanova-hosted edge instances to the operational rail and verify their first FINAL.** The 48-hour clock starts after that preflight.
+For this experiment, CPU-only scheduling and unprivileged network isolation were checked on Villanova infrastructure. The selected server-edge source package was installed in an isolated user directory, its source checks passed, strict cryptographic support was available, and seven packaging tests passed after supplying test dependencies and public-key fixtures. The connected preflight passed: 15 records in three separate books reached strict FINAL, including one service ordered before real GPU execution, accepted and independently verified against retained originals. Twelve fresh edge identities then started the scored run.
 
 ## GPU work within the 48-hour run
 
-Time-bounded GPU batches will execute real model requests while CPU-based edges continue recording and collecting proofs between batches. The plan uses up to four B200 GPUs, with approximately half the memory per GPU, subject to scheduler availability. We will report actual model revisions, request counts, latency, GPU allocation time and verified outcomes. GPUs are not reserved continuously while the system waits for finality.
+Time-bounded GPU batches execute real model requests while CPU-based edges continue recording and collecting proofs between batches. The run uses two B200 GPUs per batch, with batches serialized, with approximately half the memory per GPU, subject to scheduler availability. We will report actual model revisions, request counts, latency, GPU allocation time and verified outcomes. GPUs are not reserved continuously while the system waits for finality.
 
 ## Relationship to existing work
 
